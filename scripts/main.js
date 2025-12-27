@@ -36,6 +36,8 @@ const raycaster = new THREE.Raycaster();
 
 let currentRotation = { x: 0, y: 0 };
 let targetRotation = { x: 0, y: 0 };
+let isPageFocused = true;
+let autoRotationAngle = 0;
 
 window.addEventListener('mousemove', (event) => {
     mousePosition.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -50,6 +52,15 @@ window.addEventListener('mousemove', (event) => {
     // Smooth rotation targets
     targetRotation.x = mousePosition.y * 0.2;
     targetRotation.y = mousePosition.x * 0.2;
+});
+
+// Focus/blur detection for auto-rotation
+window.addEventListener('blur', () => {
+    isPageFocused = false;
+});
+
+window.addEventListener('focus', () => {
+    isPageFocused = true;
 });
 
 // Dragon model
@@ -93,13 +104,20 @@ let time = 0;
 function animate() {
     time += 0.01;
 
-    // Smooth interpolation
-    currentRotation.x += (targetRotation.x - currentRotation.x) * 0.08;
-    currentRotation.y += (targetRotation.y - currentRotation.y) * 0.08;
-
     if (dragon) {
-        // Dragon follows mouse
-        dragon.lookAt(target.position);
+        if (!isPageFocused) {
+            // Auto-rotate horizontally when focus is lost
+            autoRotationAngle += 0.02;
+            dragon.rotation.y = autoRotationAngle;
+            dragon.rotation.x = 0;
+            dragon.rotation.z = 0;
+        } else {
+            // Dragon follows mouse when focused
+            // Smooth interpolation
+            currentRotation.x += (targetRotation.x - currentRotation.x) * 0.08;
+            currentRotation.y += (targetRotation.y - currentRotation.y) * 0.08;
+            dragon.lookAt(target.position);
+        }
     }
 
     renderer.render(scene, camera);
