@@ -68,7 +68,7 @@ export const LIVE_SOCIALS: SocialLink[] = SOCIALS.filter((s) => s.url !== "");
 export const CV: FileLink = {
   href: "/cv/cv.pdf",
   label: "cv",
-  sizeKb: 350,
+  sizeKb: 0,
 };
 
 export const MAIL_SUBJECT = "Hello!";
