@@ -15,11 +15,32 @@ export interface SiteConfig {
   locale: string;
 }
 
+/**
+ * Where this build will actually be served from.
+ *
+ * Only used for absolute URLs — the sitemap and OpenGraph metadata. It has to
+ * follow the deployment rather than be pinned, or a Vercel build would publish
+ * a sitemap pointing at GitHub Pages.
+ *
+ *   1. NEXT_PUBLIC_SITE_URL   — set it explicitly to override everything
+ *   2. Vercel's own production domain, which it injects automatically
+ *   3. GitHub Pages, the default target
+ */
+function resolveSiteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit.replace(/\/$/, "");
+
+  const vercel = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL;
+  if (vercel) return `https://${vercel}`;
+
+  return "https://berkayemrekeskin.github.io/portfolio";
+}
+
 export const SITE: SiteConfig = {
   name: "Berkay", // TODO(content): your display name
   tagline: "Computer Engineer", // TODO(content): one line under your name
   email: "berkayemrekeskin@gmail.com",
-  url: "https://berkayemrekeskin.github.io/portfolio",
+  url: resolveSiteUrl(),
   locale: "en",
 };
 
