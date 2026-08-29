@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette sampled from the room sprites so the UI chrome and the art agree. */
+  --color-bg: #101018;
+  --color-room: #292833;
+  --color-panel: #1c1b25;
+  --color-fg: #e9e5de;
+  --color-muted: #9b95a8;
+  --color-line: #3d3a4c;
+  --color-accent: #e8a33d;
+  --color-glow: #ffe9b0;
+
+  --font-display: var(--font-pixel), "Courier New", monospace;
+  --font-displ: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: Myriad, sans-serif;
+}
+
+:root {
+  /* Whole-integer scene scale, written by useSceneScale. */
+  --scene-scale: 2;
+  /* One art pixel, in CSS pixels. Keeps outlines exactly 1px of art at any zoom. */
+  --px: calc(1px / var(--scene-scale));
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* --- pixel primitives ---------------------------------------------------- */
+
+.pixel {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+/* The room art is far larger than the box it is drawn into, so it is always
+   being downscaled. Smoothing is the right choice there — `pixelated` only
+   helps when upscaling, and on a downscale it drops pixels unevenly. */
+.scene-stage img {
+  image-rendering: auto;
+}
+
+/* --scene-scale is set on the stage's sizer, so --px resolves per-scale here
+   rather than against the :root fallback. */
+.scene-stage {
+  --px: calc(1px / var(--scene-scale, 1));
+}
+
+/* --- hover and focus response -------------------------------------------
+   Hovering an object draws nothing on the object itself: the cursor label
+   names it, and that is the whole affordance. Anything more (a box, a glow)
+   has to be a rectangle, because the room is one painting with no per-object
+   silhouette to trace — and a rectangle around a cat looks like a bug.
+
+   Keyboard focus is the exception. It has no cursor and no label following
+   it, so the focus ring on the invisible hotspot buttons is the only way to
+   see where you are, and it must stay visible. */
+
+.scene-stage button:focus-visible {
+  /* --px is one scene unit, so this is a constant ~2 device pixels whatever
+     the fit scale happens to be, rather than a ring that thickens as the
+     window grows. */
+  outline: calc(var(--px) * 2) solid var(--color-accent);
+  outline-offset: var(--px);
+}
+
+/* --- accessibility ------------------------------------------------------- */
+
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--color-accent);
+  color: #17140c;
+  font-family: var(--font-display);
+  transform: translateY(-120%);
+  transition: transform 120ms ease-out;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (forced-colors: active) {
+  .scene-stage img {
+    forced-color-adjust: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}

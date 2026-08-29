@@ -1,0 +1,79 @@
+{
+  "channelId": "UCGXrJ779QeoHs6nx9r1biUw",
+  "channelTitle": "Berkay",
+  "fetchedAt": "2026-08-29",
+  "videos": [
+    {
+      "provider": "youtube",
+      "id": "GqmCE2h0fT0",
+      "title": "Fast Zombie Animation in Zbrush & Cinema 4D",
+      "publishedAt": "2024-08-29",
+      "poster": "/media/art/yt-GqmCE2h0fT0.webp",
+      "url": "https://www.youtube.com/watch?v=GqmCE2h0fT0"
+    },
+    {
+      "provider": "youtube",
+      "id": "svPzcd-_Y0o",
+      "title": "Unreal Engine 5 - Butterflies",
+      "publishedAt": "2023-05-21",
+      "poster": "/media/art/yt-svPzcd-_Y0o.webp",
+      "url": "https://www.youtube.com/watch?v=svPzcd-_Y0o"
+    },
+    {
+      "provider": "youtube",
+      "id": "QTE5J5VAel0",
+      "title": "Unreal Engine 5 - Cybercity tryout",
+      "publishedAt": "2023-05-21",
+      "poster": "/media/art/yt-QTE5J5VAel0.webp",
+      "url": "https://www.youtube.com/watch?v=QTE5J5VAel0"
+    },
+    {
+      "provider": "youtube",
+      "id": "Awlkbp0p3hE",
+      "title": "Snowy Terrain (Unreal Engine 5 Environment)",
+      "publishedAt": "2022-12-11",
+      "poster": "/media/art/yt-Awlkbp0p3hE.webp",
+      "url": "https://www.youtube.com/watch?v=Awlkbp0p3hE"
+    },
+    {
+      "provider": "youtube",
+      "id": "0P8twMS84ys",
+      "title": "Ruins (Unreal Engine 5.1)",
+      "publishedAt": "2022-12-03",
+      "poster": "/media/art/yt-0P8twMS84ys.webp",
+      "url": "https://www.youtube.com/watch?v=0P8twMS84ys"
+    },
+    {
+      "provider": "youtube",
+      "id": "JXaOlN4DR8Y",
+      "title": "Forest Lake (Unreal Engine 5.1)",
+      "publishedAt": "2022-12-02",
+      "poster": "/media/art/yt-JXaOlN4DR8Y.webp",
+      "url": "https://www.youtube.com/watch?v=JXaOlN4DR8Y"
+    },
+    {
+      "provider": "youtube",
+      "id": "uIR5jCdF-Hk",
+      "title": "Rain (Unreal Engine 5)",
+      "publishedAt": "2022-11-28",
+      "poster": "/media/art/yt-uIR5jCdF-Hk.webp",
+      "url": "https://www.youtube.com/watch?v=uIR5jCdF-Hk"
+    },
+    {
+      "provider": "youtube",
+      "id": "ZvFJTv4eqyA",
+      "title": "Rigging characters in Cinema 4D",
+      "publishedAt": "2022-03-21",
+      "poster": "/media/art/yt-ZvFJTv4eqyA.webp",
+      "url": "https://www.youtube.com/watch?v=ZvFJTv4eqyA"
+    },
+    {
+      "provider": "youtube",
+      "id": "l3XmVZpbXHI",
+      "title": "Merging two objects without Dynamesh in ZBrush",
+      "publishedAt": "2022-03-18",
+      "poster": "/media/art/yt-l3XmVZpbXHI.webp",
+      "url": "https://www.youtube.com/watch?v=l3XmVZpbXHI"
+    }
+  ]
+}
